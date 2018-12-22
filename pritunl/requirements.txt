@@ -1,0 +1,17 @@
+go
+git
+bzr
+wget
+py2-pip 
+gcc
+python
+python-dev
+musl-dev
+linux-headers
+libffi-dev
+openssl-dev
+py-setuptools
+openssl
+procps
+ca-certificates
+openvpn

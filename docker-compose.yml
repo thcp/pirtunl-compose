@@ -1,0 +1,30 @@
+version: '3'
+services:
+  mongo:
+    container_name: mongo
+    build:
+      context: ./mongodb
+    image: pritunl_mongo
+    networks:
+      - pritunl
+    restart: always
+      volumes:
+        - /var/lib/mongo/data:/data/db    
+
+  pritunl:
+    container_name: pritunl
+    build:
+      context: ./pritunl
+    image: pritunl
+    depends_on:
+      - mongo
+    networks:
+      - pritunl
+    ports:
+      - "80:80"
+      - "443:443"
+      - "1194:1194/udp"
+    restart: always
+
+networks:
+  pritunl:
