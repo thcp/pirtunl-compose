@@ -8,8 +8,8 @@ services:
     networks:
       - pritunl
     restart: always
-      volumes:
-        - /var/lib/mongo/data:/data/db    
+    volumes:
+      - /var/lib/mongo/data:/data/db    
 
   pritunl:
     container_name: pritunl
