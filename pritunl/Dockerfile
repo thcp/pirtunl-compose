@@ -31,7 +31,7 @@ RUN \
 
 RUN \
     sed -i -e '/^attributes/a prompt\t\t\t= yes' /etc/ssl/openssl.cnf \
-    && sed -i -e '/countryName_max/a countryName_value\t\t= US' /etc/ssl/openssl.cnf
+    && sed -i -e '/countryName_max/a countryName_value\t\t= PT' /etc/ssl/openssl.cnf
 
 ADD start.sh /start.sh
 
