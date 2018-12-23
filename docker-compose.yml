@@ -1,29 +1,41 @@
 version: '3'
 services:
   mongo:
-    container_name: mongo
+    container_name: pritunldb
+    hostname: pritunldb
     build:
       context: ./mongodb
-    image: pritunl_mongo
+    image: pritunldb
     networks:
-      - pritunl
-    restart: always
+      - private
     volumes:
       - /var/lib/mongo/data:/data/db    
-
+  
   pritunl:
+    environment:
+      - MONGODB_SERVER=pritunldb
     container_name: pritunl
+    hostname: pritunl
+    privileged: true
     build:
       context: ./pritunl
     image: pritunl
-    depends_on:
-      - mongo
     networks:
-      - pritunl
+      - private
+      - proxy
     ports:
-      - "80:80"
-      - "443:443"
+      - "1194:1194"
       - "1194:1194/udp"
+    links:
+      - mongo
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
     restart: always
+
 networks:
-  pritunl:
+  proxy:
+    external:
+      name: proxy
+  private:
+    driver: bridge
+    internal: true
