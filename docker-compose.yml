@@ -24,7 +24,6 @@ services:
       - private
       - proxy
     ports:
-      - "1194:1194"
       - "1194:1194/udp"
     links:
       - mongo
