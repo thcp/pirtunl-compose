@@ -24,7 +24,9 @@ services:
       - private
       - proxy
     ports:
-      - "1194:1194/udp"
+      - "${PRIV_IP}:80:80"
+      - "${PRIV_IP}:443:443/udp"
+      - "${PUB_IP}:1194:1194/udp"
     links:
       - mongo
     volumes:
