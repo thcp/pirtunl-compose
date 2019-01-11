@@ -22,7 +22,6 @@ services:
     image: pritunl
     networks:
       - private
-      - proxy
     ports:
       - "${PRIV_IP}:80:80"
       - "${PRIV_IP}:443:443/udp"
@@ -34,9 +33,6 @@ services:
     restart: always
 
 networks:
-  proxy:
-    external:
-      name: proxy
   private:
     driver: bridge
     internal: true
