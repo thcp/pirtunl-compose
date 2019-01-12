@@ -5,4 +5,4 @@ run:
 stop:
 	docker-compose stop
 remove:
-	docker-compose rm -s
+	docker-compose rm -sf
